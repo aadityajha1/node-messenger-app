@@ -1,7 +1,7 @@
 const request = require('request');
 const senderAction = require('../templates/senderAction');
 const sendMessage = require('../templates/sendMessage');
-const sendGenericTemplate = require('../templates/sendGenericTemplate');
+const sendGenericTemplate = require('../templates/sendGenericMessage');
 module.exports = function processMessage(event) {
     if (!event.message.is_echo) {
       const message = event.message;
