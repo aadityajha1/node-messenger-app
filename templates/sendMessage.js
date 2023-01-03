@@ -12,7 +12,7 @@ return new Promise(function(resolve, reject) {
             }
       }, function(error, response, body) {
             if (error) {
-                console.log("Error sending message: " + response.error);
+                console.log("Error sending message: " + response.error ? response.error : response);
             reject(response.error);
             } else {
                resolve(body);
