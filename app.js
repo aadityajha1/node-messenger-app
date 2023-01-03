@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-require('./routes/webhook_verify')(app);
+require('./webhook_verify')(app);
 // app.use('/', indexRouter);
 // app.use('/users', usersRouter);
 
