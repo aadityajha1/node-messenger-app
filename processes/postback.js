@@ -4,7 +4,9 @@ const sendMessage = require('../templates/sendMessage');
 module.exports = function processPostback(event) {
   const senderID = event.sender.id;
   const payload = event.postback.payload;
+  console.log(payload)
   if (payload === 'WELCOME') {
+    console.log('WELCOME done')
      request({ url: "https://graph.facebook.com/v2.6/" + senderID,
      qs: { access_token: process.env.PAGE_ACCESS_TOKEN,
            fields: "first_name"
@@ -17,7 +19,8 @@ module.exports = function processPostback(event) {
       } else {
           let bodyObject = JSON.parse(body);
           console.log(bodyObject);
-          name = bodyObject.first_name;
+          let name = bodyObject.first_name;
+          console.log(name)
           greeting = "Hello " + name  + ". ";
      }
      let message = greeting + "Welcome to Healthbot. Hope you are       doing good today";
