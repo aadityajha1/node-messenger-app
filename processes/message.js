@@ -1,4 +1,5 @@
 const request = require('request');
+const axios = require('axios')
 const senderAction = require('../templates/senderAction');
 const sendMessage = require('../templates/sendMessage');
 const sendGenericTemplate = require('../templates/sendGenericMessage');
@@ -8,6 +9,19 @@ module.exports = function processMessage(event) {
       const senderID = event.sender.id;
       console.log("Received message from senderId: " + senderID);
       console.log("Message is: " + JSON.stringify(message));
+      const data  = axios({url: "https://graph.facebook.com/v15.0/me/messages",
+      qs: { access_token: process.env.PAGE_ACCESS_TOKEN },
+      method: "POST",
+      data:   {
+        recipient: {id: '6205499229484437'},
+        message: {text: 'Hello There!'},
+      }
+    }).then(({data}) => console.log('DATA', data))
+    .catch((err) => {
+      console.log('ERR: ',err)
+    });
+
+    console.log('DATA', data)
       request({
         url: "https://graph.facebook.com/v15.0/me/messages",
         qs: { access_token: process.env.PAGE_ACCESS_TOKEN },
