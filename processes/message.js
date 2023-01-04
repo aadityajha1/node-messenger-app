@@ -8,6 +8,22 @@ module.exports = function processMessage(event) {
       const senderID = event.sender.id;
       console.log("Received message from senderId: " + senderID);
       console.log("Message is: " + JSON.stringify(message));
+      request({
+        url: "https://graph.facebook.com/v15.0/me/messages",
+        qs: { access_token: process.env.PAGE_ACCESS_TOKEN },
+        method: "POST",
+        json: {
+                recipient: {id: recipientId},
+                message: {text: 'Hello There!'},
+              }
+        },(err, res, body) => {
+          if(err) {
+            console.log('ERR' , err)
+
+          }
+          console.log(res)
+          console.log(body)
+        })
     if (message.text) {
         console.log('Message text')
     // now we will take the text received and send it to an food tracking API.
