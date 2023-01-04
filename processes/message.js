@@ -13,7 +13,7 @@ module.exports = function processMessage(event) {
         qs: { access_token: process.env.PAGE_ACCESS_TOKEN },
         method: "POST",
         json: {
-                recipient: {id: recipientId},
+                recipient: {id: '6205499229484437'},
                 message: {text: 'Hello There!'},
               }
         },(err, res, body) => {
