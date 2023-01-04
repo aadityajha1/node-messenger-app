@@ -9,6 +9,7 @@ request({
    "sender_action":"typing_on"
   }
 }, function(error, response, body) {
+      console.log('Typing is on: ', response)
       if (error) {
       console.log("Error sending message: " + response.error);
      }

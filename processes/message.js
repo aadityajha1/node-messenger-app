@@ -9,6 +9,7 @@ module.exports = function processMessage(event) {
       console.log("Received message from senderId: " + senderID);
       console.log("Message is: " + JSON.stringify(message));
     if (message.text) {
+        console.log('Message text')
     // now we will take the text received and send it to an food tracking API.
       let text = message.text;
       let request = require("request");
